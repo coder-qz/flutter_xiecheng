@@ -7,6 +7,7 @@ class HomePage extends StatefulWidget{
   }
 
 }
+const offset = 100;
 class _HomePageState extends State<HomePage>{
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class _HomePageState extends State<HomePage>{
       "https://pics1.baidu.com/feed/03087bf40ad162d9140ac5e1851ab0e98813cdb6.jpeg?token=a85042fda49b15a2211ca1b1ba9dfb3e&s=6C9213D74E33588A8C1974F603008022",
       "https://pics0.baidu.com/feed/810a19d8bc3eb13502e6f8474f77b2d6fc1f4493.jpeg?token=75a79788c1c739acfff5fc328f483e58&s=1EE6C404F8AF964766BB150C030080C2",
     ];
+
     return Scaffold(
       body:Stack(
         children: <Widget>[
@@ -38,16 +40,25 @@ class _HomePageState extends State<HomePage>{
                         },
                         pagination: SwiperPagination(),
                       ),
+                    ),
+                    Container(
+                      height: 800,
+                      child: Text("哈哈"),
                     )
                   ],
                 )
             ),
           ),
           Opacity(
-            opacity: 1,
+            opacity: alpha,
             child: Container(
               height: 80,
-              child: Text("首页"),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Center(
+                child: Padding(padding: EdgeInsets.only(top:20),
+                  child: Text("首页"),
+                ),
+              ),
             ) ,
           ),
 
@@ -55,10 +66,17 @@ class _HomePageState extends State<HomePage>{
       )
     );
   }
-
+  double alpha = 0;
   void _onScroll(double pixels) {
-
+    double alp = pixels/offset;
+    if(alp<0){
+      alp = 0;
+    }else if(alp>1){
+      alp = 1;
+    }
+    setState(() {
+      alpha = alp;
+    });
   }
-
 }
 
