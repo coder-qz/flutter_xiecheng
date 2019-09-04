@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+
 class HomePage extends StatefulWidget{
   @override
   _HomePageState createState() {
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage>{
                   if(notification is ScrollUpdateNotification && notification.depth==0){
                     _onScroll(notification.metrics.pixels);
                   }
+                  return false;
                 },
                 child: ListView(
                   children: <Widget>[

@@ -14,7 +14,17 @@ class _SearchPageState extends State<SearchPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("搜索")
+      body: Container(
+        height: 80,
+        decoration: BoxDecoration(color: Colors.blue),
+        child: Center(
+          child: Padding(padding: EdgeInsets.only(top:20),
+            child: Text("搜索",
+            style: TextStyle(color: Colors.white)
+          ),
+          ),
+        ),
+      )
     );
   }
 
